@@ -1,0 +1,22 @@
+Welcome to the Multipurpose Bot privacy policy.
+
+I'll make this short, I know you don't have time to read a long version.
+
+References:
+When "Bot" "Service" or "Product" appear in here, I'm referring to Multipurpose Bot.
+When "I" or "I'll" appear in here, I'm referring to the creator of the bot.
+When "you", "your" or "you're" appear in here, I'm referring to you as the user.
+
+The bot stores some information, particularly your username and an XP (experience) amount. You do, however, have the option to delete all your information stored by the bot.
+
+Your username is required information to be stored as names for groups of your preferences and information, that's how the bot saves your progress and preferences, this feature has been added for your convenience. It can be deleted, but will be added whenever your progress or preferences are updated.
+
+Your progress and preferences are the only pieces of information that is stored, your usage of slash commands are not stored unless they relate to preferences or progress.
+
+Your progress is used to provide perks for the server you're using the bot in.
+
+When the bot is removed from a server, it will remove information of all members for that specific server.
+
+THE CONTENTS OF YOUR MESSAGES ARE NEVER STORED, THEY MAY ONLY BE USED FOR MODERATION PURPOSES.
+
+By using Multipurpose Bot, you consent to the storage of the information listed above. You have the right to remove your information at any time.
