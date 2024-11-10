@@ -47,12 +47,12 @@ async def on_ready():
     print(f"Bot logged in as {client.user}")
     await client.change_presence(activity=activity)
     for guild in client.guilds:
-        paths.create_directory_in_parent(guild.name)
+        paths.create_guild_directory(guild.name)
 
 @client.event
 async def on_guild_join(guild : discord.Guild):
     print("Joined server, start storing info")
-    paths.create_directory_in_parent(guild.name)
+    paths.create_guild_directory(guild.name)
 
 #region levelling system
 
@@ -197,6 +197,32 @@ async def on_guild_remove(guild : discord.Guild):
 @tree.command(name="hello", description="Useful info about Multipurpose Bot")
 async def hello(interaction : discord.Interaction):
     await interaction.response.send_message(embed=helloEmbed())
+
+@tree.command(name="role", description="Gives a role to a member if you have the manage roles permission")
+async def role(interaction : discord.Interaction, role : discord.Role, member : discord.Member):
+    try:
+        if interaction.user.guild_permissions.manage_roles:
+            await member.add_roles(role)
+            await interaction.response.send_message("Successfully added role to member")
+        else:
+            await interaction.response.send_message(embed=embeds.insufficient_permissions("MANAGE_ROLES"))
+    except discord.errors.Forbidden as e:
+        await interaction.response.send_message(embed=embeds.role_error(True))
+    except Exception as e:
+        await interaction.response.send_message(embed=embeds.error(e))
+
+@tree.command(name="unrole", description="Removes a role from a member if you have the manage roles permission")
+async def role(interaction : discord.Interaction, role : discord.Role, member : discord.Member):
+    try:
+        if interaction.user.guild_permissions.manage_roles:
+            await member.remove_roles(role)
+            await interaction.response.send_message("Successfully removed role from member")
+        else:
+            await interaction.response.send_message(embed=embeds.insufficient_permissions("MANAGE_ROLES"))
+    except discord.errors.Forbidden as e:
+        await interaction.response.send_message(embed=embeds.role_error(False))
+    except Exception as e:
+        await interaction.response.send_message(embed=embeds.error(e))
 
 @tree.command(name="report_bugs", description="Report a bug with the bot")
 async def report_bugs(interaction : discord.Interaction, message : str):

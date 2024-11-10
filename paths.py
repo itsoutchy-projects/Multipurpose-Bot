@@ -32,6 +32,17 @@ def create_directory_in_parent(name : str):
     if not os.path.exists(newpath):
         os.makedirs(newpath)
 
+def create_guild_directory(name : str):
+    path = Path(__file__)
+
+    newpath = ""
+    if "/" in str(path.parent):
+        newpath = str(path.parent.absolute()) + "/" + "db" + "/" + name
+    else:
+        newpath = str(path.parent.absolute()) + "\\" + "db" + "\\" + name
+    if not os.path.exists(newpath):
+        os.makedirs(newpath)
+
 def create_user_directory(message : discord.Message = None, member : discord.Member = None):
     newpath = get_user_directory(message=message, member=member)
     if not os.path.exists(newpath):
